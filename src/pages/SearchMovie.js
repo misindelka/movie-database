@@ -4,18 +4,9 @@ import Box from '@mui/material/Box'
 import { TextField, Container } from '@mui/material'
 
 // internal imports
-import { getMovieData } from '../actions/movieActions'
 import { MovieCard } from '../components/MovieCard'
 
-export const SearchMovie = () => {
-  const { movies } = useSelector(state => state.movies)
-  const dispatch = useDispatch()
-
-  const handleChangeSearchMovie = e => {
-    const { value } = e.target
-    dispatch(getMovieData(value))
-  }
-
+export const SearchMovie = ({ movies }) => {
   return (
     <Container display="flex">
       <Box
@@ -28,15 +19,7 @@ export const SearchMovie = () => {
         autoComplete="off"
         m={6}
         borderRadius={4}
-      >
-        <TextField
-          id="outlined-basic"
-          label="Search movie ..."
-          variant="outlined"
-          fullWidth
-          onChange={handleChangeSearchMovie}
-        />
-      </Box>
+      ></Box>
       <Box
         sx={{
           display: 'flex',

@@ -1,6 +1,7 @@
 //external imports
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 // internal imports
 import './App.css'
@@ -12,6 +13,7 @@ import { FavoriteMovies } from './pages/FavoriteMovies'
 function App() {
   const [favoriteMoviesData, setFavoriteMovie] = useState([])
   const favoriteMoviesIds = { ...favoriteMoviesData.map(({ imdbID }) => imdbID) }
+  const { movies } = useSelector(state => state.movies)
 
   const addToFavorites = movie => {
     setFavoriteMovie([...favoriteMoviesData, movie])
@@ -30,7 +32,7 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="search" element={<SearchMovie />} />
+          <Route path="search" element={<SearchMovie movies={movies} />} />
           <Route
             path="detail"
             element={

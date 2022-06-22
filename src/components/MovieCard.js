@@ -15,13 +15,7 @@ export const MovieCard = ({ movie }) => {
     >
       <Card sx={{ width: 345, height: 450, background: 'black' }}>
         <CardActionArea>
-          <CardMedia
-            sx={{ maxHeight: 345 }}
-            backgroundSize="contain"
-            component="img"
-            image={movie?.Poster}
-            alt="Movie"
-          />
+          <CardMedia sx={{ maxHeight: 345 }} component="img" image={movie?.Poster} alt="Movie" />
           <CardContent
             sx={{ maxHeight: 250, background: 'black', color: 'white', marginTop: '10px' }}
           >
